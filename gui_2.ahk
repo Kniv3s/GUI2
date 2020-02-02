@@ -34,7 +34,7 @@ Gui, Add, Edit, w50 0x100 ReadOnly vKapEdit, %KapAttempts%
 Gui, Add, UpDown,-16 hp x+0 gWindowAction vKapUpDown Range0-96, %KapAttempts%
 Gui, Add, CheckBox, gWindowAction vKapBox xp-50 yp+30, Brute Force Kaptcha
 Gui, Add, CheckBox, gWindowAction vLowMpBox, Low MP Setup
-Gui, Add, Tab3, gWindowAction vModeTab AltSubmit, Battle|Dragon||Idle
+Gui, Add, Tab3, gWindowAction vModeTab AltSubmit, Battle|Dragon|Idle
 Gui, Tab, 1
 Gui, Add, CheckBox, gWindowAction vAdsBox, Run ads
 Gui, Add, CheckBox, gWindowAction vAltBox, Use Alter
@@ -396,7 +396,7 @@ return
 
 ChestFind:
 {
-	if CheckPixel(815, 105, 0xFFFFFF)
+	if CheckPixel(815, 105, 0x000000)
 	{
 		Sendx("c", 800)
 		FoundChest := 1
