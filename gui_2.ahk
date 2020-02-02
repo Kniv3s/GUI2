@@ -396,7 +396,7 @@ return
 
 ChestFind:
 {
-	if CheckPixel(950, 100, 0x4D4DE8)
+	if CheckPixel(815, 105, 0xFFFFFF)
 	{
 		Sendx("c", 800)
 		FoundChest := 1
