@@ -55,7 +55,7 @@ Gui, Show,, Grow Castle
 GoSub, UpdateVars
 
 return
-Sendx(X, T := 100)
+Sendx(X, T := 20)
 {
 	if WinActive("BlueStacks")
 	{
@@ -175,15 +175,20 @@ MainLoop:
 			}
 			;Check for cactus man
 			Found = 0
-			loop, 150
+			loop, 200
 			{
+				t := A_TickCount
 				if CheckPixel(410, 330, 0x4E4EFF)
 				{
-					Found = 1
-					if NOT CheckPixel(450, 210, 0x4499D5)
+					Found := 1
+					if NOT CheckPixel(135, 245, 0x8AEBFE)
 					{
 						Sendx("w", 350)
 					}
+					break
+				}
+				if A_TickCount - t > 2000
+				{
 					break
 				}
 				sleep, 10
@@ -199,7 +204,7 @@ MainLoop:
 					Sendx("e", 400)
 				}
 			}
-			else if NOT CheckPixel(795, 395, 0x0BA671)
+			else if NOT CheckPixel(795, 395, 0x0BA671) && (A_TickCount - CactusFound > 1000 * 30)
 			{
 				Sendx("q", 400)
 			}
@@ -300,7 +305,6 @@ KaptchaCheck:
 			if (Kap = 1)
 			{
 				ret_ := ((A_Hour * 60) + A_Min) + (Times[K_] // 60)
-				msg := ret_ . ":" . ret . ":" . K_
 				if (K_ = 1 OR (ret_ < ret) )
 				{
 					Sendx("k", 5000)
@@ -320,9 +324,7 @@ KaptchaCheck:
 					}
 					K_ := K_ + 1
 					sleep, 3000
-					msg := msg . ":X"
 				}
-				FileAppend, %msg%`n, KapLog.txt
 			}
 			else
 			{
